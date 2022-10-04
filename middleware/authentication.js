@@ -5,7 +5,7 @@ export const verifyToken = async (req, res, next) => {
     let token;
     if (
         req.headers.authorization &&
-        req.headers.authorization.startsWith("Bearer ")
+        req.headers.authorization.startsWith("Bearer")
     ) {
         try {
             token = req.headers.authorization.split(" ")[1];
@@ -34,7 +34,7 @@ export const adminStatus = async (req, res, next) => {
 };
 // if role === professional, this user has the ability to create a recipe.
 export const profStatus = async(req,res,next)=>{
-    if (req,user && req.user.role === "professional"){
+    if (req.user && req.user.role === "professional"){
         next()
     }else{
         res.status(401);
