@@ -1,27 +1,34 @@
 import  jwt  from "jsonwebtoken";
 import {user} from "../Models/userModel.js";
 
-export const verifyToken = async (req, res, next) => {
+export const verifyToken = async(req,res,next)=>{
     let token;
-    if (
+
+    if(
+        console.log("4444444"),
         req.headers.authorization &&
-        req.headers.authorization.startsWith("Bearer")
-    ) {
+        req.headers.authorization.startsWith("Bearer ")
+    ){
+        
         try {
             token = req.headers.authorization.split(" ")[1];
-            const decoded = jwt.verify(token, process.env.JWT_PASSKEY);
-            req.user = await user.findById(decoded.id).select("-password");
+            console.log("token",token)
+            const decoded = jwt.verify(token,"56A56251436C044434190BE8198969EFD4303C24893331B3A04B8F85D5388500");
+            req.user = await user.findOne(decoded._id).select("-password");
+            console.log("3333", req.user)
             next();
+
         } catch (error) {
             console.error(error.message);
         }
     }
 
-    if (!token) {
+    if(!token) {
         res.status(401);
-        throw new Error(`Authorization denied!`)
+        throw new Error('Not Authorized to crate a recipe');
     }
-};
+}
+
 
 //admin privileges to create, delete and update a recipe and user profile. 
 export const adminStatus = async (req, res, next) => {
@@ -34,11 +41,12 @@ export const adminStatus = async (req, res, next) => {
 };
 // if role === professional, this user has the ability to create a recipe.
 export const profStatus = async(req,res,next)=>{
-    if (req.user && req.user.role === 'professional'){
+   console.log(req.user)
+    if (req.user && req.user.role === "professional"){
         next()
     }else{
         res.status(401);
-        throw new Error('Not Authorized');
+        throw new Error('Not Authorized to create a recipe');
     }
 };
 

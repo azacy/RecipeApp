@@ -28,8 +28,8 @@ const recipesSchema = new mongoose.Schema(
         comments: [
             {
                 type: String
-            }
-        ],
+            }],
+
         rating: {
             type: Number,
             default: 0,
@@ -55,6 +55,6 @@ const recipesSchema = new mongoose.Schema(
         timestamps: true,
     }
 )
-   
+
 
 export const recipe = mongoose.model('recipe', recipesSchema)

@@ -124,8 +124,8 @@ export const loginUser = async (req, res) => {
     try {
       const User = await user.login(email, password);
       // console.log(user)
-      const token = await generateToken(user._id)
-      if (!user) {
+      
+      if (!User) {
         throw new Error("Incorrect email or password")
       }
   

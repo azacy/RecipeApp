@@ -6,10 +6,10 @@ import{Router} from 'express';
 
 const router = Router();
 
-router.get("/like",LikeRecipe);
+router.post('/create',verifyToken,profStatus,createRecipe);
 router.get('/',getAllRecipe);
 router.get('/:id',verifyToken, getRecipe);
-router.post('/create',verifyToken,profStatus,createRecipe);
+router.get("/like",LikeRecipe);
 router.put('/update/:id',verifyToken,adminStatus,updateRecipe);
 router.delete('/delete/:id',verifyToken,adminStatus,deleteRecipe);
 

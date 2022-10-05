@@ -22,7 +22,6 @@ const userSchema = new mongoose.Schema(
         },
         role: {
             type: String,
-            required: true,
             enum: ['regular' ,'professional'],
             default: 'regular'
         },
