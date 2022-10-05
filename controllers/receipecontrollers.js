@@ -5,7 +5,7 @@ import { recipe } from '../Models/recipeModels.js';
 
 
 export const createRecipe = async (req, res) => {
-   console.log("222222",req.user)
+   
     try {
         const rec = new recipe(req.body);
         console.log(rec)

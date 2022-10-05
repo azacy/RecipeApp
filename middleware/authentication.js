@@ -5,7 +5,7 @@ export const verifyToken = async(req,res,next)=>{
     let token;
 
     if(
-        console.log("4444444"),
+        
         req.headers.authorization &&
         req.headers.authorization.startsWith("Bearer ")
     ){
@@ -15,7 +15,7 @@ export const verifyToken = async(req,res,next)=>{
             console.log("token",token)
             const decoded = jwt.verify(token,"56A56251436C044434190BE8198969EFD4303C24893331B3A04B8F85D5388500");
             req.user = await user.findOne(decoded._id).select("-password");
-            console.log("3333", req.user)
+            
             next();
 
         } catch (error) {
