@@ -24,9 +24,7 @@ const recipesSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
-        photo: {
-            type: String,
-        },
+        photo: String,
         comments: [
             {
                 type: String
