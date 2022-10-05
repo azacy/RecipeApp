@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import {connectDB} from "./config/db.js";
 import userRoutes from "./route/userRoute.js"; 
 import recipeRoutes from "./route/reciperoutes.js";
+import cors from "cors"
 
 
 dotenv.config();
@@ -10,6 +11,9 @@ connectDB();
 
 const app = express();
 app.use(express.json());
+app.use(cors({
+    origin:"*"
+}));
 
 const port = process.env.PORT || 2000;
 
