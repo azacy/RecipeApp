@@ -5,7 +5,7 @@ import { recipe } from '../Models/recipeModels.js';
 
 
 export const createRecipe = async (req, res) => {
-   
+
     try {
         const rec = new recipe(req.body);
         console.log(rec)
@@ -92,9 +92,9 @@ export const deleteRecipe = async (req, res) => {
     }
 };
 
-export const LikeRecipe = async(req,res) => {
+export const LikeRecipe = async (req, res) => {
     const allRecipe = await recipe.find({})
-    
+
     const newArr = allRecipe.filter(recipe => recipe.tag === "local")
     res.json(newArr)
 }

@@ -13,7 +13,7 @@ export const verifyToken = async(req,res,next)=>{
         try {
             token = req.headers.authorization.split(" ")[1];
             console.log("token",token)
-            const decoded = jwt.verify(token,"56A56251436C044434190BE8198969EFD4303C24893331B3A04B8F85D5388500");
+            const decoded = jwt.verify(token,"JWT_PASSKEY");
             req.user = await user.findOne(decoded._id).select("-password");
             
             next();
