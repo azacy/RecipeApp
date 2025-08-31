@@ -22,7 +22,7 @@ const port = process.env.PORT || 2000;
 app.use('/user', userRoutes);
 app.use('/recipe',recipeRoutes)
 app.get('/', (req,res)=>{
-    res.send("carry me dy go where i no know!!!")
+    res.send("this your cana i dy feel am for my head!!!")
 });
 
 
